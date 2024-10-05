@@ -1,5 +1,11 @@
-.div{
-    display:flex;
+body {
+    width: 100%; /* 确保body元素充满整个屏幕 */
+    margin: 0;   /* 移除默认的外边距 */
+    padding: 0;  /* 移除默认的内边距 */
+}
+
+.container {
+    width: 100%; /* 确保容器宽度自适应页面 */
 }
 
 .img {
