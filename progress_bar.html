@@ -7,6 +7,21 @@
         <div class="container">
             <img class="img" src="Images/progress_bar.png" alt="Notification">
         </div>
-        
+        <script>
+            // 连接到 WebSocket 服务器
+            const ws = new WebSocket('ws://localhost:8080');
+    
+            ws.onopen = function() {
+                console.log('Connected to WebSocket server');
+            };
+    
+            // 当收到服务器发来的消息时
+            ws.onmessage = function(event) {
+                if (event.data === 'jump') {
+                    // 如果收到 "jump" 消息，跳转到新页面
+                    window.location.href = 'task.html';
+                }
+            };
+        </script>
     </body>
 </html>
