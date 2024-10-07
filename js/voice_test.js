@@ -28,6 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 停止按钮的点击事件
     stopBtn.addEventListener('click', () => {
         recognition.stop();
-        resultDiv.textContent = "Voice input stopped.";
+        resultDiv.textContent = `Voice results: ${transcript}`;
     });
 });
