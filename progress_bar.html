@@ -1,27 +1,47 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="Styles/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/progress_bar.css">
+    <script src="js/progress_bar.js" defer></script>
 </head>
-<html>
-    <body>
-        <div class="container">
-            <img class="img" src="Images/progress_bar.png" alt="Notification">
+<body>
+    <div class="container">
+        <div id="person-container" class="person-container">
+            <img src="images/hito 1.png" alt="walking users" class="person" id="person">
+            <img src="images/social-rewards-flag.png" alt="flag" class="flag">
         </div>
-        <script>
-            // 连接到 WebSocket 服务器
-            const ws = new WebSocket('ws://localhost:8080');
-    
-            ws.onopen = function() {
-                console.log('Connected to WebSocket server');
-            };
-    
-            // 当收到服务器发来的消息时
-            ws.onmessage = function(event) {
-                if (event.data === 'jump') {
-                    // 如果收到 "jump" 消息，跳转到新页面
-                    window.location.href = 'task.html';
-                }
-            };
-        </script>
-    </body>
-</html>
+        <div id="progress-bar-container" class="progress-bar-container">
+            <div id="dots" class="dots">
+                <div class="circle">
+                    <div class="inner-circle"></div>
+                </div>
+                <div class="circle">
+                    <div class="inner-circle"></div>
+                </div>
+                <div class="circle">
+                    <div class="inner-circle"></div>
+                </div>
+                <div class="circle">
+                    <div class="inner-circle"></div>
+                </div>
+                <div class="circle">
+                    <div class="inner-circle"></div>
+                </div>
+                <div class="circle">
+                    <div class="inner-circle"></div>
+                </div>
+                <div class="circle">
+                    <div class="inner-circle"></div>
+                </div>
+                <div class="circle">
+                    <div class="inner-circle"></div>
+                </div>
+            </div>
+            <div id="progress-bar" class="progress-bar">
+                <div id="inner-progress-bar" class="inner-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+</body>
