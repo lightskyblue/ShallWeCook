@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const recognition = new webkitSpeechRecognition();
     recognition.lang = 'en';
     recognition.continuous = true;  // 让语音识别持续运行
+    recognition.interimResults = true;  // 启用临时结果，用户讲话时可以看到中间结果
 
     startBtn.addEventListener('click', () => {
         recognition.start();
@@ -13,8 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     recognition.onresult = (event) => {
-        const speechResult = event.results[0][0].transcript;
-        resultDiv.textContent = `Voice results: ${speechResult}`;
+        let transcript = '';
+        for (let i = 0; i < event.results.length; i++) {
+            transcript += event.results[i][0].transcript;
+        }
+        resultDiv.textContent = `Voice results: ${transcript}`;
     };
 
     recognition.onerror = (event) => {
