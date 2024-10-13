@@ -20,11 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     recognition.onresult = (event) => {
-        for (let i = 0; i < event.results.length; i++) {
-            currentTranscript += event.results[i][0].transcript;  // 更新当前转录文本
+        const last = event.results[event.results.length - 1];  // 只处理最后一次结果
+        if (last.isFinal) {
+            currentTranscript += last[0].transcript;  // 添加新的结果
+            resultDiv.innerHTML = `Voice results: ${totalTranscript}<br>${currentTranscript}`;  // 显示累计结果
+            hasInput = true;  // 标志有输入
         }
-        resultDiv.innerHTML = `Voice results: ${totalTranscript}<br>${currentTranscript}`;  // 用 <br> 标签分行显示累计结果
-        hasInput = true;  // 标志有输入
     };
 
     recognition.onerror = (event) => {
