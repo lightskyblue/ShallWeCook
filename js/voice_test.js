@@ -1,40 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start-btn');
-    const stopBtn = document.getElementById('stop-btn'); // 获取停止按钮
+    const stopBtn = document.getElementById('stop-btn');
     const resultDiv = document.getElementById('result');
 
     const recognition = new webkitSpeechRecognition();
     recognition.lang = 'en';
-    recognition.continuous = true;  // 让语音识别持续运行
-    recognition.interimResults = true;  // 启用临时结果，用户讲话时可以看到中间结果
+    recognition.continuous = true;
+    recognition.interimResults = true;
 
-    let transcript = '';  // 用来存储最终的语音结果
-    let hasInput = false; // 标志变量，用于记录是否有语音输入
+    let totalTranscript = '';  // 存储所有转录的文本
+    let currentTranscript = ''; // 存储当前会话的转录文本
+    let hasInput = false;  // 标志是否有输入
 
     startBtn.addEventListener('click', () => {
         recognition.start();
         resultDiv.textContent = "Listening...";  // 提示开始监听
-        transcript = '';  // 每次开始录音时清空之前的结果
+        currentTranscript = '';  // 每次开始新录音时清空当前转录内容
         hasInput = false;  // 重置标志
     });
 
     recognition.onresult = (event) => {
         for (let i = 0; i < event.results.length; i++) {
-            transcript += event.results[i][0].transcript;
+            currentTranscript += event.results[i][0].transcript;  // 更新当前转录文本
         }
-        resultDiv.textContent = `Voice results: ${transcript}`;
-        hasInput = true;  // 记录有语音输入
+        resultDiv.innerHTML = `Voice results: ${totalTranscript}<br>${currentTranscript}`;  // 用 <br> 标签分行显示累计结果
+        hasInput = true;  // 标志有输入
     };
 
     recognition.onerror = (event) => {
         resultDiv.textContent = 'Error: ' + event.error;
     };
 
-    // 停止按钮的点击事件
     stopBtn.addEventListener('click', () => {
         recognition.stop();
         if (hasInput) {
-            resultDiv.textContent = `Final results: ${transcript}`;
+            totalTranscript += currentTranscript + '<br>';  // 将当前会话的转录结果加入总转录文本，并加上 <br> 标签换行
+            resultDiv.innerHTML = `Final results: <br>${totalTranscript}`;  // 最终结果也按行显示
         } else {
             resultDiv.textContent = "No input detected. Please click 'Start' and try again.";
         }
