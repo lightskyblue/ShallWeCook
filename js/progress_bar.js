@@ -4,7 +4,7 @@ const person = document.getElementById('person');
 const circles = document.querySelectorAll('.circle'); // 获取所有 circle
 
 // 动画持续时间（以毫秒为单位）
-const duration = 5000; // 10mins完成
+const duration = 20000; // 10mins完成
 
 // 起始时间和状态
 let start = null;
