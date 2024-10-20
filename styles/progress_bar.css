@@ -1,4 +1,4 @@
-/* 基础样式 */
+/* Basic styles */
 body {
     margin: 0;
     padding: 0;
@@ -10,36 +10,36 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* 基础样式 */
+/* Basic styles */
 .container {
     display: flex;
-    flex-direction: column; /* 垂直排列 person_container 和 progress_bar_container */
+    flex-direction: column; 
     align-items: center;
     width: 100%;
-    max-width: 80%; /* 控制整体宽度 */
-    margin: 0 auto; /* 居中对齐 */
+    max-width: 80%; 
+    margin: 0 auto;
 }
 
-/* 人物和旗帜容器 */
+/* Person and flag container */
 .person-container {
     display: flex;
-    justify-content: space-between; /* 将 person 和 flag 分布在两端 */
+    justify-content: space-between; 
     align-items: center;
-    width: 100%; /* 使内容横跨整个容器 */
+    width: 100%; 
 }
 
 .person {
-    width: 5rem; /* 根据需要调整 */
+    width: 5rem;
     height: auto;
     margin-left: -1.2rem;
 }
 
 .flag {
-    width: 1.5rem; /* 根据需要调整 */
+    width: 1.5rem;
     height: auto;
 }
 
-/* progress_bar_container 样式 */
+/* Styles for progress_bar_container */
 .progress-bar-container {
     display: flex;
     align-items: center;
@@ -48,35 +48,35 @@ body {
     margin-top: 1rem;
 }
 
-/* progress_bar 样式 */
+/* Styles for progress_bar */
 .progress-bar {
     width: 100%;
-    height: 2rem; /* 高度可以根据需要调整 */
-    background-color: white; /* 背景颜色 */
+    height: 2rem; 
+    background-color: white; 
     border: 0.1rem solid #ccc;
-    border-radius: 1rem; /* 使进度条的边缘圆滑 */
-    z-index: 1; /* 设置比 dots 低的层级 */
+    border-radius: 1rem; 
+    z-index: 1; 
     display: flex;
-    align-items: center; /* 确保进度条和 dots 垂直居中 */
+    align-items: center; 
 }
 
-.inner-progress-bar{
+.inner-progress-bar {
     height: 80%;
-    width: 3.5%; /* Percentage of progress, adjust this for the progress value */
-    background-color: #A3D65C; /* Green color for the progress */
-    border-radius: 1rem; /* Ensures rounded corners for the progress bar */
+    width: 3.5%; 
+    background-color: #A3D65C; 
+    border-radius: 1rem; 
 }
 
-/* dots 样式 */
+/* Styles for dots */
 .dots {
     display: flex;
-    justify-content: space-between; /* 将圆圈分布在进度条两端 */
+    justify-content: space-between;
     width: 100%;
-    position: absolute; /* 相对定位，确保和 progress_bar 在同一容器中 */
-    z-index: 2; /* 让 dots 位于 progress_bar 上方 */
+    position: absolute; 
+    z-index: 2; 
 }
 
-/* 圆圈样式 */
+/* Styles for circles */
 .circle {
     width: 2.5rem;
     height: 2.5rem;
@@ -89,8 +89,8 @@ body {
 }
 
 .circle:first-child {
-    background-color: white; /* 第一个圆圈的绿色 */
-    border: 0.1rem solid black; /* 黑色外边框 */
+    background-color: white; 
+    border: 0.1rem solid black; 
 }
 
 .inner-circle {
@@ -102,21 +102,17 @@ body {
 }
 
 .circle:nth-child(1) .inner-circle {
-    background-color: #A3D65C; /* 绿色背景 */
-    border: 0.1rem solid black; /* 黑色外边框 */
+    background-color: #A3D65C;
+    border: 0.1rem solid black; 
 }
 
-
-
-/* 响应式调整 */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .person {
         width: 4.5rem;
         margin-right: 0.25rem;
     }
 
-
-    
     .circle {
         width: 2rem;
         height: 2rem;
@@ -126,7 +122,7 @@ body {
         width: 1.2rem;
         height: 1.2rem;
     }
-    
+
     .last-circle img {
         width: 1.5rem;
     }
